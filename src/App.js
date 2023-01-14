@@ -2,7 +2,6 @@
 import { useReducer } from "react"
 import DigitButton from "./DigitButton.js"
 import OperationButton from "./OperationButton.js"
-import "./styles.css"
 
 export const ACTIONS = {
   ADD_DIGIT: "add-digit",
@@ -89,7 +88,7 @@ function reducer(state, { type, payload }) {
 
       return {
         ...state,
-        overwrite: true,
+        overwrite: false,
         previousOperand: null,
         operation: null,
         currentOperand: evaluate(state)
@@ -140,7 +139,7 @@ function App() {
         <div className="current-operand">{formatOperand(currentOperand)}</div>
       </div>
       <button className="span-two" onClick={() => dispatch({ type: ACTIONS.CLEAR })}>AC</button>
-      <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>DEL</button>
+      <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>C</button>
       <OperationButton operation="÷" dispatch={dispatch} />
       <DigitButton digit="1" dispatch={dispatch} />
       <DigitButton digit="2" dispatch={dispatch} />
